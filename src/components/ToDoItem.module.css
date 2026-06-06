@@ -1,0 +1,162 @@
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color var(--transition), background var(--transition), transform var(--transition), opacity var(--transition);
+  cursor: default;
+}
+
+.item:hover {
+  border-color: rgba(255, 137, 6, 0.3);
+  transform: translateX(2px);
+}
+
+.item.completed {
+  opacity: 0.55;
+}
+
+.item.completed:hover {
+  border-color: rgba(61, 166, 92, 0.3);
+  transform: none;
+}
+
+/* Checkbox */
+.checkbox {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  margin-top: 1px;
+}
+
+.checkbox:hover {
+  border-color: var(--accent);
+  background: rgba(255, 137, 6, 0.08);
+}
+
+.checkbox.checked {
+  background: var(--green);
+  border-color: var(--green);
+  animation: checkPop 0.25s ease;
+}
+
+.checkbox svg {
+  width: 12px;
+  height: 10px;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.text {
+  font-size: 0.975rem;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.completed .text {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.text:not(.completed .text) {
+  cursor: text;
+}
+
+.date {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.editInput {
+  background: var(--surface2);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.975rem;
+  padding: 0.35rem 0.6rem;
+  outline: none;
+  width: 100%;
+  box-shadow: 0 0 0 3px rgba(255, 137, 6, 0.15);
+}
+
+/* Action buttons */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.item:hover .actions {
+  opacity: 1;
+}
+
+.btn {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.editBtn:hover {
+  background: rgba(255, 137, 6, 0.15);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.saveBtn {
+  color: var(--green);
+  border-color: var(--green);
+  background: rgba(61, 166, 92, 0.1);
+  opacity: 1 !important;
+}
+
+.saveBtn:hover {
+  background: rgba(61, 166, 92, 0.25);
+}
+
+.deleteBtn:hover {
+  background: rgba(242, 95, 76, 0.15);
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+
+/* Always show actions when editing */
+.item:has(.editInput) .actions {
+  opacity: 1;
+}
